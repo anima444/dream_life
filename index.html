@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Design Your Game</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e0e0e0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            width: 350px;
+            text-align: center;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        .section {
+            margin-top: 20px;
+        }
+        .character, .building {
+            margin-top: 10px;
+            padding: 10px;
+            border: 2px solid #333;
+            border-radius: 8px;
+        }
+        .options label, .options select {
+            display: block;
+            margin: 5px;
+        }
+        button {
+            padding: 10px 15px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        #characterDisplay, #buildingDisplay {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100px;
+            margin-top: 10px;
+            border: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Design Your World</h1>
+
+    <!-- Character Section -->
+    <div class="section character">
+        <h2>Character Design</h2>
+        <div class="options">
+            <label for="hairColor">Hair Color:</label>
+            <select id="hairColor">
+                <option value="black">Black</option>
+                <option value="blonde">Blonde</option>
+                <option value="brown">Brown</option>
+                <option value="red">Red</option>
+            </select>
+
+            <label for="outfit">Outfit:</label>
+            <select id="outfit">
+                <option value="casual">Casual</option>
+                <option value="formal">Formal</option>
+                <option value="sporty">Sporty</option>
+            </select>
+
+            <button onclick="customizeCharacter()">Apply Character Design</button>
+        </div>
+        <div id="characterDisplay">Character Preview</div>
+    </div>
+
+    <!-- Building Section -->
+    <div class="section building">
+        <h2>Building Design</h2>
+        <div class="options">
+            <label for="buildingColor">Exterior Color:</label>
+            <select id="buildingColor">
+                <option value="white">White</option>
+                <option value="blue">Blue</option>
+                <option value="green">Green</option>
+                <option value="gray">Gray</option>
+            </select>
+
+            <label for="furniture">Furniture:</label>
+            <select id="furniture">
+                <option value="modern">Modern</option>
+                <option value="classic">Classic</option>
+                <option value="minimalist">Minimalist</option>
+            </select>
+
+            <button onclick="customizeBuilding()">Apply Building Design</button>
+        </div>
+        <div id="buildingDisplay">Building Preview</div>
+    </div>
+</div>
+
+<script>
+    function customizeCharacter() {
+        const hairColor = document.getElementById("hairColor").value;
+        const outfit = document.getElementById("outfit").value;
+        const characterDisplay = document.getElementById("characterDisplay");
+
+        characterDisplay.innerHTML = `
+            <div style="width: 50px; height: 50px; background-color: ${hairColor}; border-radius: 50%;"></div>
+            <p style="margin: 0;">Outfit: ${outfit.charAt(0).toUpperCase() + outfit.slice(1)}</p>
+        `;
+    }
+
+    function customizeBuilding() {
+        const buildingColor = document.getElementById("buildingColor").value;
+        const furniture = document.getElementById("furniture").value;
+        const buildingDisplay = document.getElementById("buildingDisplay");
+
+        buildingDisplay.innerHTML = `
+            <div style="width: 80px; height: 80px; background-color: ${buildingColor}; border: 2px solid #333;"></div>
+            <p style="margin: 0;">Furniture Style: ${furniture.charAt(0).toUpperCase() + furniture.slice(1)}</p>
+        `;
+    }
+</script>
+
+</body>
+</html>
